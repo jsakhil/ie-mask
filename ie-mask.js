@@ -398,7 +398,7 @@
             if (jMask.options.placeholder) {
                 el.removeAttr('placeholder');
             }
-            if (el.data('mask-maxlength')) {
+            if (el.data('iemask-maxlength')) {
                 el.removeAttr('maxlength');
             }
             p.destroyEvents();
@@ -440,7 +440,7 @@
                 // this is necessary, otherwise if the user submit the form
                 // and then press the "back" button, the autocomplete will erase
                 // the data. Works fine on IE9+, FF, Opera, Safari.
-                if (el.data('mask')) {
+                if (el.data('iemask')) {
                   //el.attr('autocomplete', 'off');
                 }
 
@@ -544,22 +544,22 @@
     };
 
     $.fn.masked = function(val) {
-        return this.data('mask').getMaskedVal(val);
+        return this.data('iemask').getMaskedVal(val);
     };
 
     $.fn.unmask = function() {
         clearInterval($.maskWatchers[this.selector]);
         delete $.maskWatchers[this.selector];
         return this.each(function() {
-            var dataMask = $(this).data('mask');
+            var dataMask = $(this).data('iemask');
             if (dataMask) {
-                dataMask.remove().removeData('mask');
+                dataMask.remove().removeData('iemask');
             }
         });
     };
 
     $.fn.cleanVal = function() {
-        return this.data('mask').getCleanVal();
+        return this.data('iemask').getCleanVal();
     };
 
     $.applyDataMask = function(selector) {
